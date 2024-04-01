@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Simple Calculator</title>
+  <!-- Bootstrap 5 CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    /* Some additional styling */
+    body {
+      
+      font-family: Arial, sans-serif;
+      text-align: center;
+     background-image: url(pexels-photo-585752.jpeg);
+      height:70vh ;
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-attachment: fixed;
+      margin-top: 50px;
+    }
+
+    #calculator {
+      max-width: 400px;
+      margin: 0 auto;
+      border: 4px solid #cfa56d;
+      border-radius: 10px;
+      padding: 25px;
+      background-color: #d8b58c;
+      box-shadow: 0 0 10px rgba(17, 20, 194, 0.1);
+    }
+
+    #display {
+      width: calc(100% - 20px);
+      height: 100px;
+      font-size: 24px;
+      margin-bottom: 15px;
+      text-align: right;
+      border: none;
+      background-color: #f7faf5;
+      border-radius: 5px;
+      padding: 10px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      margin: 0 auto;
+    }
+
+    .btn {
+      font-size: 30px;
+      height: 70px;
+      padding: 11px 15px;
+      margin: 5px;
+      border-radius: 10px;
+    }
+    
+    .btn-primary {
+      background-color: #007bff;
+      border-color: #007bff;
+    }
+
+    .btn-primary:hover {
+      background-color: #e27f45;
+      border-color: #a1502a;
+    }
+
+    .btn-info {
+      background-color: #17a2b8;
+      border-color: #17a2b8;
+    }
+
+    .btn-info:hover {
+      background-color: #117a8b;
+      border-color: #117a8b;
+    }
+
+    .btn-success {
+      background-color: #22b945;
+      border-color: #10f044;
+    }
+
+    .btn-success:hover {
+      background-color: #e7e40c;
+      border-color: #078a26;
+    }
+
+    .btn-danger {
+      background-color: #dc3545;
+      border-color: #dc3545;
+    }
+
+    .btn-danger:hover {
+      background-color: #f7a335;
+      border-color: #b91825;
+    }
+  </style>
+</head>
+<body>
+
+<div id="calculator">
+  <!-- Calculator display -->
+  <input type="text" id="display" class="form-control mb-3" readonly>
+
+  <!-- Calculator buttons -->
+  <div class="row">
+    <div class="col">
+      <button class="btn btn-primary w-100" onclick="appendToDisplay('7')">7</button>
+    </div>
+    <div class="col">
+      <button class="btn btn-primary w-100" onclick="appendToDisplay('8')">8</button>
+    </div>
+    <div class="col">
+      <button class="btn btn-primary w-100" onclick="appendToDisplay('9')">9</button>
+    </div>
+    <div class="col">
+      <button class="btn btn-dark w-100" onclick="appendToDisplay('+')">+</button>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col">
+      <button class="btn btn-primary w-100" onclick="appendToDisplay('4')">4</button>
+    </div>
+    <div class="col">
+      <button class="btn btn-primary w-100" onclick="appendToDisplay('5')">5</button>
+    </div>
+    <div class="col">
+      <button class="btn btn-primary w-100" onclick="appendToDisplay('6')">6</button>
+    </div>
+    <div class="col">
+      <button class="btn btn-dark w-100" onclick="appendToDisplay('-')">-</button>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col">
+      <button class="btn btn-primary w-100" onclick="appendToDisplay('1')">1</button>
+    </div>
+    <div class="col">
+      <button class="btn btn-primary w-100" onclick="appendToDisplay('2')">2</button>
+    </div>
+    <div class="col">
+      <button class="btn btn-primary w-100" onclick="appendToDisplay('3')">3</button>
+    </div>
+    <div class="col">
+      <button class="btn btn-dark w-100" onclick="appendToDisplay('*')">*</button>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col">
+      <button class="btn btn-primary w-100" onclick="appendToDisplay('0')">0</button>
+    </div>
+    <div class="col">
+      <button class="btn btn-primary w-100" onclick="appendToDisplay('.')">.</button>
+    </div>
+    <div class="col">
+      <button class="btn btn-success w-100" onclick="calculate()">=</button>
+    </div>
+    <div class="col">
+      <button class="btn btn-dark w-100" onclick="appendToDisplay('/')">/</button>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col">
+      <button class="btn btn-danger w-100" onclick="clearDisplay()">Clear</button>
+    </div>
+  </div>
+</div>
+
+<script>
+  function appendToDisplay(value) {
+    document.getElementById('display').value += value;
+  }
+
+  function clearDisplay() {
+    document.getElementById('display').value = '';
+  }
+
+  function calculate() {
+    var expression = document.getElementById('display').value;
+    var result = eval(expression);
+    document.getElementById('display').value = result;
+  }
+</script>
+
+</body>
+</html>
